@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Button } from "react-bootstrap"
+
 
 class EmployeesInOffice extends Component {
    constructor(props) {
@@ -11,7 +13,22 @@ class EmployeesInOffice extends Component {
             {id: 4, name: 'Test3 Test3', email: 'test3@email.com' }
          ]
       }
-   }
+
+      this.inOffice = false; // need to retrieve this value from Database!! CHANGE THIS
+
+      this.inOrOutStyle = "success";
+      
+      if (!this.inOffice) { // change one to condition that checks if employee is set to in office or not
+        this.setOrUnset = 'Set to "in office" on this day' 
+        this.inOrOutStyle = "success"
+      }
+      else {
+        this.setOrUnset = 'Set to "out of office" on this day';
+        this.inOrOutStyle = "warning"
+      }
+
+
+    }
 
    renderTableData() {
     return this.state.employees.map((employee, index) => {
@@ -33,9 +50,24 @@ class EmployeesInOffice extends Component {
     })
  }
 
+ handleSetUnsetOffice(e) {
+    e.preventDefault()
+    console.log("Setting/Unsetting Employee in office...")
+    try {
+        // change value of in office of employee in DATABASE
+    } catch {
+        console.log("Error. Please try again.")
+    }
+}
+
+
  render() {
     return (
        <div class="employees-in-office">
+        <Button variant={this.inOrOutStyle} className="mt-3 m-2" onClick={this.handleSetUnsetOffice}>
+                {this.setOrUnset}
+        </Button>
+
           <h3 id='in-office-title'>Employees In Office</h3>
           <table class="content-table">
             <thead> 
