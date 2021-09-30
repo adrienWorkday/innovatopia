@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* Employees in-office table */
+
+* {
+	font-family: sans-serif;
+}
+
+.employees-in-office {
+  width: 30%;
+  text-align: center;
+}
+
+.content-table {
+	border-collapse: collapse;
+	margin: 0.3% auto 0 auto;
+	font-size: 0.9em;
+	border-radius: 10px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	width: 90%;
+}
+
+.content-table thead tr {
+	background-color: #2364bd;
+	color: #ffffff;
+	text-align: center;
+	font-weight: bold;
+}
+
+.content-table th, .content-table td {
+	padding: 12px 15px;
+}
+
+.content-table tbody tr {
+	border-bottom: 1px solid #dddddd;
+  text-align: center;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+	background-color: #f7f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+	border-bottom: 2px solid #2364bd;
+}
+
+.content-table tbody tr.active-row {
+	font-weight: bold;
+	color: #2364bd;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
