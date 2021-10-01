@@ -7,7 +7,7 @@ router.get('/', async function(req, res, next) {
   await db.getAllEmployees().then(
     results => {
       console.log("GET request successful. Here is a list of all employees");
-      console.log(results);
+      // console.log(results);
       res.send(results);
     }).catch(error => {
       console.error(error)
@@ -15,11 +15,13 @@ router.get('/', async function(req, res, next) {
 });
 
 /* GET users from a specifc office. */
-router.get('/:officename/:date', function(req, res, next) {
-  db.collections("employee").find().toArray().then(
+// router.get('/:officename/:date', async function(req, res, next) {
+router.get('/temp/:date', async function(req, res, next) {
+  await db.getAllEmployeesInOfficeOnDate(1, this.props.match.params.date).then(
     results => {
+      console.log(re)
         console.log("GET request successful, here are the all the users in "
-        +req.params.officename+" on "+req.params.date+":")
+        +req.query.officeID+" on "+req.query.date+":")
         console.log(results)
         console.log("sending results to recipient...")
         res.send(results);
