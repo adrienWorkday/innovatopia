@@ -14,16 +14,17 @@ class EmployeesInOffice extends Component {
          ]
       }
 
+      this.date = this.props.month + "/" + this.props.day + "/" + this.props.year;
       this.inOffice = false; // need to retrieve this value from Database!! CHANGE THIS
 
       this.inOrOutStyle = "success";
       
       if (!this.inOffice) { // change one to condition that checks if employee is set to in office or not
-        this.setOrUnset = 'Set to "in office" on this day' 
+        this.setOrUnset = 'Set to "in office" on ' + this.date;
         this.inOrOutStyle = "success"
       }
       else {
-        this.setOrUnset = 'Set to "out of office" on this day';
+        this.setOrUnset = 'Set to "out of office" on ' + this.date;
         this.inOrOutStyle = "warning"
       }
 
