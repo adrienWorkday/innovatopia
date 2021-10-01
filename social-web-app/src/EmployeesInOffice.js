@@ -4,9 +4,9 @@ import { Button } from "react-bootstrap"
 var inOffice = false; 
 var employees = [
    { id: 1, name: 'Stefano Puzzuoli', email: 'stefano.puzzuoli@workday.com' },
-   { id: 2, name: 'Test Test', email: 'test@email.com' },
-   { id: 3, name: 'Test2 Test2', email: 'test2@email.com' },
-   {id: 4, name: 'Test3 Test3', email: 'test3@email.com' }
+   { id: 2, name: 'Sinéad Galbrait', email: 'sinead.galbrait@workday.com' },
+   { id: 3, name: 'Jonathan Nicholas', email: 'jonathan.nicholas@workday.com' },
+   {id: 4, name: 'Des Kelleher', email: 'des.kelleher@workday.com' }
 ]
 class EmployeesInOffice extends Component {
    constructor(props) {
