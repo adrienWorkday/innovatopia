@@ -7,8 +7,9 @@ var mongo = require('./mongo');
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-const { list } = require('./mongo');
+var usersRouter = require('./routes/users');á
+var officesRouter = require('./routes/offices')
+
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/offices', officesRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
