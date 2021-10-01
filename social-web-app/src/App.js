@@ -1,5 +1,4 @@
 import './App.css';
-import 'react-calendar/dist/Calendar.css';
 
 import Calendar from 'react-calendar';
 import { Slider } from './Slider';
