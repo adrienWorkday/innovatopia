@@ -11,7 +11,7 @@ export const Slider = function(offices){
 
     return (
         //root division containing the entire slider component
-        <div class="slider-div" style={{display:"flex"}}>
+        <div className="slider-div" style={{display:"flex", justifyContent:'center', marginTop:40}}>
 
             {/*div containig the left arrow*/}
             <div className="triangle-container" style={{width:30, marginRight:20}} onClick= {function(){if (offset < 0){setOffset(offset+80)}}}>
