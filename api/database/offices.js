@@ -1,15 +1,7 @@
-const {MongoClient} = require('mongodb')
-
-
-function createClient() {
-    var username = process.env.DB_USERNAME;
-    var password = process.env.DB_PASSWORD;
-    var uri = `mongodb+srv://${username}:${password}@orbitcluster.dxwea.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-    return new MongoClient(uri);
-}
+var database = require('./database')
 
 async function getAllOffices() {
-    const client = createClient();
+    const client = database.createClient();
 
     try {
         await client.connect();
@@ -24,7 +16,7 @@ async function getAllOffices() {
 getAllOffices().catch(console.error);
 
 async function getAllOfficeNames() {
-    const client = createClient();
+    const client = database.createClient();
 
     try {
         await client.connect();
