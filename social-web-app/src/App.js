@@ -3,7 +3,9 @@ import Calendar from 'react-calendar';
 import { Slider } from './Slider';
 import React, { useState, useEffect } from 'react';
 import EmployeesInOffice from './EmployeesInOffice';
-
+var day = 0;
+var month = 0;
+var year = 0;
 function App() {
   const [value, onChange] = useState(new Date());
   const [visibility, setVisibility] = useState(false);
@@ -13,7 +15,6 @@ function App() {
     .then(res => res.json())
     .then(res => setData(res))
   },[]);
-
   var container = document.getElementsByClassName('Calendar')[0];
     document.addEventListener('click', function( event ) {
       if(container === undefined) {return}
@@ -32,7 +33,12 @@ function App() {
         <Calendar
           onChange={onChange}
           value={value}
-          onClickDay={function() {setVisibility(true)}}
+          onClickDay={(value, event) => { 
+              day = value.getDate()
+              month = value.getMonth() + 1 // returns month-1 value, need to add on 1 again.
+              year = value.getFullYear()
+              setVisibility(true)
+        }}
           /* 
             Clicking functionality for calendar, value returned as Date, can be separated into days, months, years etc:
               onClickDay={(value, event) => console.log('Clicked day: ', value)}
@@ -42,7 +48,7 @@ function App() {
           */ 
           />
       </div>
-      {visibility && <EmployeesInOffice />}
+      {visibility && <EmployeesInOffice day={day} month={month} year={year}/>}
     </div>
   );
 }
