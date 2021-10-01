@@ -1,19 +1,20 @@
 import './App.css';
-
 import Calendar from 'react-calendar';
 import { Slider } from './Slider';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EmployeesInOffice from './EmployeesInOffice';
-
-
 var day = 0;
 var month = 0;
 var year = 0;
-
 function App() {
   const [value, onChange] = useState(new Date());
-  const offices = [{"officeName":"Dublin"}, {"officeName":"Prague"},{"officeName":"Munich"}]
   const [visibility, setVisibility] = useState(false);
+  const [data, setData] = useState([{}]);
+  useEffect(() => {
+    fetch("http://localhost:3000/offices")
+    .then(res => res.json())
+    .then(res => setData(res))
+  },[]);
   var container = document.getElementsByClassName('Calendar')[0];
     document.addEventListener('click', function( event ) {
       if(container === undefined) {return}
@@ -27,7 +28,7 @@ function App() {
       <div className="logo">
         <img src="workdayLogo.png" height={120} width={300} />
       </div>
-      {Slider(offices)}
+      {Slider(data)}
       <div className="Calendar">
         <Calendar
           onChange={onChange}
