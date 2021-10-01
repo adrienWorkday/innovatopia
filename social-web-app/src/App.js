@@ -20,6 +20,9 @@ function App() {
   });
   return (
     <div className="App">
+      <div className="logo">
+        <img src="workdayLogo.png" height={120} width={300} />
+      </div>
       {Slider(offices)}
       <div className="Calendar">
         <Calendar
