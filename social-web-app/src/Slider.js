@@ -1,7 +1,10 @@
 import { useState } from 'react';
+<<<<<<< Updated upstream
 
 //list of offices to be pulled from the databse.
 const offices = [{"officeName":"Dublin"}, {"officeName":"Prague"},{"officeName":"Munich"}] //CHANGE ME!!!
+=======
+>>>>>>> Stashed changes
 export const Slider = function(offices){
     //constants used by the slider
     const width = 100;
@@ -25,6 +28,7 @@ export const Slider = function(offices){
                 {/*moving container for the offices*/}
               <div className="slides" style={{width: 3*width, display:"flex", marginLeft:20, marginRight:20, transition:"transform .35s ease-in-out", transform: "translateX("+offset+"px)"}}>   
                   {offices.map(office => (
+<<<<<<< Updated upstream
                       //template div filled in by the offices array
                       <div className="office" key={office.officeName} style={{marginLeft:20, marginRight:20, width:width, height:30}} onClick={function(){
                           setOffice(office.officeName)
@@ -37,6 +41,9 @@ export const Slider = function(offices){
 
                         }}> {office.officeName}
                       </div>
+=======
+                      <div className="office" key={office._id} style={{marginLeft:20, marginRight:20, width:width}}> {office.officeName}</div>
+>>>>>>> Stashed changes
                   ))}
               </div>    
             </div>
