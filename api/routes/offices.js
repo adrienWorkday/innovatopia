@@ -5,7 +5,7 @@ var officeDB = require('../database/offices')
 
 /* GET all offices data */
 router.get('/', async function(req, res, next) {
-    var offices = await officeDB.getOffices();
+    var offices = await officeDB.getAllOffices();
     res.send(offices);
     // db.collections("office").find().toArray().then(
     //     results => {
@@ -19,17 +19,19 @@ router.get('/', async function(req, res, next) {
 });
 
 /*GET all offices names */
-router.get('/names',function(req,res,next){
-    db.collections("office").find({},{officeName:1, officeCapacity:0, peopleInOffice:0}).toArray().then(
-        results => {
-            console.log("GET request successful, here is a list of currently supported offices:");
-            console.log(results);
-            console.log("sending offices to recipient...");
-            res.send(results);
+router.get('/names',async function(req,res,next){
+    var officeNames = await officeDB.getAllOfficeNames();
+    res.send(officeNames);
+    // db.collections("office").find({},{officeName:1, officeCapacity:0, peopleInOffice:0}).toArray().then(
+    //     results => {
+    //         console.log("GET request successful, here is a list of currently supported offices:");
+    //         console.log(results);
+    //         console.log("sending offices to recipient...");
+    //         res.send(results);
 
-        }).catch(error =>{
-            console.error(error);
-        })
+    //     }).catch(error =>{
+    //         console.error(error);
+    //     })
 })
 
 module.exports = router;
