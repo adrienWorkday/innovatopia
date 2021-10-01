@@ -1,18 +1,21 @@
 var express = require('express');
-const { Db } = require('mongodb');
+// const { Db } = require('mongodb');
 var router = express.Router();
+var officeDB = require('../database/offices')
 
 /* GET all offices data */
-router.get('/', function(req, res, next) {
-    db.collections("office").find().toArray().then(
-        results => {
-            console.log("GET request successful, here are the offices found:")
-            console.log(results)
-            console.log("sending results to recipient...")
-            res.send(results);
-        }).catch(error => {
-            console.error(error)
-        })
+router.get('/', async function(req, res, next) {
+    var offices = await officeDB.getOffices();
+    res.send(offices);
+    // db.collections("office").find().toArray().then(
+    //     results => {
+    //         console.log("GET request successful, here are the offices found:")
+    //         console.log(results)
+    //         console.log("sending results to recipient...")
+    //         res.send(results);
+    //     }).catch(error => {
+    //         console.error(error)
+    //     })
 });
 
 /*GET all offices names */
