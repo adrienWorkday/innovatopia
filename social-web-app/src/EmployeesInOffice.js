@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from "react-bootstrap"
 
-
+var inOffice = false; 
 class EmployeesInOffice extends Component {
    constructor(props) {
       super(props) 
@@ -15,11 +15,11 @@ class EmployeesInOffice extends Component {
       }
 
       this.date = this.props.month + "/" + this.props.day + "/" + this.props.year;
-      this.inOffice = false; // need to retrieve this value from Database!! CHANGE THIS
+      // this.inOffice = false; // need to retrieve this value from Database!! CHANGE THIS
 
       this.inOrOutStyle = "success";
       
-      if (!this.inOffice) { // change one to condition that checks if employee is set to in office or not
+      if (!inOffice) { // change one to condition that checks if employee is set to in office or not
         this.setOrUnset = 'Set to "in office" on ' + this.date;
         this.inOrOutStyle = "success"
       }
@@ -51,15 +51,15 @@ class EmployeesInOffice extends Component {
     })
  }
 
- handleSetUnsetOffice(e) {
-    e.preventDefault()
-    console.log("Setting/Unsetting Employee in office...")
-    try {
-        // change value of in office of employee in DATABASE
-    } catch {
-        console.log("Error. Please try again.")
-    }
-}
+ handleSetUnsetOffice = (e) =>  {
+   console.log("Setting/Unsetting Employee in office...")
+      inOffice = !inOffice;
+
+      // if (inOffice) {
+      //    this.state.employees
+      // }
+       // change value of in office of employee in DATABASE
+   }
 
 
  render() {
