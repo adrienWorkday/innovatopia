@@ -7,7 +7,13 @@ var day = 0;
 var month = 0;
 var year = 0;
 function App() {
-  const [value, onChange] = useState(new Date());
+  const [currentOffice, setOffice, value, onChange] = useState({currentOffice: "6156e62fec8a132fbe87b286",value: new Date()});
+  useEffect(() => {
+    fetch(function(){
+      return('http://localhost:3000/users/date/'+{value}+'/officeID/'+{currentOffice})()})
+    .then(res => res.json())
+    .then(res => console.log(res))
+  },[currentOffice, value]);
   const [visibility, setVisibility] = useState(false);
   const [data, setData] = useState([{}]);
   useEffect(() => {
@@ -28,7 +34,7 @@ function App() {
       <div className="logo">
         <img src="workdayLogo.png" height={120} width={300} />
       </div>
-      {Slider(data)}
+      {Slider(data, setOffice.bind(this))}
       <div className="Calendar">
         <Calendar
           onChange={onChange}
@@ -38,6 +44,8 @@ function App() {
               month = value.getMonth() + 1 // returns month-1 value, need to add on 1 again.
               year = value.getFullYear()
               setVisibility(true)
+              console.log(currentOffice)
+              console.log(year,month,day)
         }}
           /* 
             Clicking functionality for calendar, value returned as Date, can be separated into days, months, years etc:

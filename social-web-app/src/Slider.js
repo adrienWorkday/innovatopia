@@ -1,9 +1,8 @@
 import { useState } from 'react';
-export const Slider = function(offices){
+export const Slider = function(offices, callback){
     //constants used by the slider
     const width = 100;
     const [offset, setOffset] = useState(0);
-    const [currentOffice, setOffice] = useState("Dublin")
     const maxLength = width*offices.length - 250;
 
     return (
@@ -22,7 +21,9 @@ export const Slider = function(offices){
                 {/*moving container for the offices*/}
               <div className="slides" style={{width: 3*width, display:"flex", marginLeft:20, marginRight:20, transition:"transform .35s ease-in-out", transform: "translateX("+offset+"px)"}}>   
                   {offices.map(office => (
-                      <div className="office" key={office._id} style={{marginLeft:20, marginRight:20, width:width}} onClick> {office.officeName}</div>
+                      <div className="office" key={office._id} style={{marginLeft:20, marginRight:20, width:width}} onClick = { () =>
+                        {console.log(office._id); 
+                        callback(office._id)}}> {office.officeName}</div>
                   ))}
               </div>    
             </div>

@@ -14,7 +14,7 @@ router.get('/', async function(req, res, next) {
     })
 });
 
-/* GET users from a specifc office. */
+/* GET users from a specifc office on a specific day. */
 // router.get('/:officename/:date', async function(req, res, next) {
 router.get('/date/:date/officeID/:officeID', async function(req, res, next) {
 

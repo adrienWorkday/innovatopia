@@ -36,7 +36,7 @@ class EmployeesInOffice extends Component {
           <tr key={id}>
              <td>{id}</td>
              <td>{name}</td>
-             <td>{email}</td>
+             <td><a href={"mailto:"+email}>{email}</a></td>
           </tr>
        )
     })
