@@ -16,13 +16,13 @@ router.get('/', async function(req, res, next) {
 
 /* GET users from a specifc office. */
 // router.get('/:officename/:date', async function(req, res, next) {
-router.get('/temp/:date', async function(req, res, next) {
-  await db.getAllEmployeesInOfficeOnDate(1, this.props.match.params.date).then(
+router.get('/date/:date/officeID/:officeID', async function(req, res, next) {
+
+  await db.getAllEmployeesInOfficeOnDate(req.params.officeID, req.params.date).then(
     results => {
-      console.log(re)
         console.log("GET request successful, here are the all the users in "
-        +req.query.officeID+" on "+req.query.date+":")
-        console.log(results)
+        +req.params.officeID+" on "+req.params.date+":")
+        // console.log(results)
         console.log("sending results to recipient...")
         res.send(results);
     }).catch(error => {

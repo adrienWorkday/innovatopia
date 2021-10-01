@@ -21,13 +21,16 @@ getAllEmployees().catch(console.error);
 
 async function getAllEmployeesInOfficeOnDate(officeID, date) {
     const client = database.createClient();
-    var testID = "6156e630e9269a37c4af6940";
-    var o_id = new ObjectId(testID);
+    var o_id = new ObjectId(officeID);
+
 
     try {
         await client.connect();
-        const query = {officeID : {$eq : o_id}};
-        employees = await client.db("social_app").collection("employee").find({"officeID" : o_id}).toArray();
+        const query = {
+            officeID : {$eq : o_id}, 
+            datesInOffice : { $elemMatch : { $eq : new Date(date)}}
+        };
+        employees = await client.db("social_app").collection("employee").find(query).toArray();
 
         return employees;
     } catch (error) {
