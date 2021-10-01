@@ -64,6 +64,7 @@ class EmployeesInOffice extends Component {
  render() {
     return (
        <div class="employees-in-office">
+          <div className="modal_content">
         <Button variant={this.inOrOutStyle} className="mt-3 m-2" onClick={this.handleSetUnsetOffice}>
                 {this.setOrUnset}
         </Button>
@@ -77,6 +78,7 @@ class EmployeesInOffice extends Component {
                 {this.renderTableData()}
              </tbody>
           </table>
+       </div>
        </div>
     )
  }

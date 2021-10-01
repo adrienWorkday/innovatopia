@@ -34,8 +34,8 @@ function App() {
               value.getFullYear()
           */ 
           />
-        {visibility && <EmployeesInOffice />}
       </div>
+      {visibility && <EmployeesInOffice />}
     </div>
   );
 }
