@@ -2,17 +2,15 @@ import React, { Component } from 'react'
 import { Button } from "react-bootstrap"
 
 var inOffice = false; 
+var employees = [
+   { id: 1, name: 'Stefano Puzzuoli', email: 'stefano.puzzuoli@workday.com' },
+   { id: 2, name: 'Test Test', email: 'test@email.com' },
+   { id: 3, name: 'Test2 Test2', email: 'test2@email.com' },
+   {id: 4, name: 'Test3 Test3', email: 'test3@email.com' }
+]
 class EmployeesInOffice extends Component {
    constructor(props) {
       super(props) 
-      this.state = { 
-         employees: [
-            { id: 1, name: 'Stefano Puzzuoli', email: 'stefano.puzzuoli@workday.com' },
-            { id: 2, name: 'Test Test', email: 'test@email.com' },
-            { id: 3, name: 'Test2 Test2', email: 'test2@email.com' },
-            {id: 4, name: 'Test3 Test3', email: 'test3@email.com' }
-         ]
-      }
 
       this.date = this.props.month + "/" + this.props.day + "/" + this.props.year;
       // this.inOffice = false; // need to retrieve this value from Database!! CHANGE THIS
@@ -32,7 +30,7 @@ class EmployeesInOffice extends Component {
     }
 
    renderTableData() {
-    return this.state.employees.map((employee, index) => {
+    return employees.map((employee, index) => {
        const { id, name, email } = employee //destructuring
        return (
           <tr key={id}>
@@ -45,7 +43,7 @@ class EmployeesInOffice extends Component {
  }
 
  renderTableHeader() {
-    let header = Object.keys(this.state.employees[0])
+    let header = Object.keys(employees[0])
     return header.map((key, index) => {
        return <th key={index}>{key.toUpperCase()}</th>
     })
@@ -55,9 +53,12 @@ class EmployeesInOffice extends Component {
    console.log("Setting/Unsetting Employee in office...")
       inOffice = !inOffice;
 
-      // if (inOffice) {
-      //    this.state.employees
-      // }
+      if (inOffice) {
+          employees.push({id: 5, name: 'Adrien Ventugol', email: 'adrien.ventugol@workday.com' })
+       }
+       else {
+          employees.pop()
+       }       
        // change value of in office of employee in DATABASE
    }
 
